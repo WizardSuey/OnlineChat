@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   delete "logout", to: "sessions#destroy"
 
+  get "edit", to: "users#edit"
+  patch "edit", to: "users#update"
+
   resources :rooms do
     resources :messages
   end

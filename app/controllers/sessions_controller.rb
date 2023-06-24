@@ -7,17 +7,17 @@ class SessionsController < ApplicationController
 
         if user.present? && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect_to root_path, notice: "Вы успешно вошли!"
+            redirect_to root_path
         else
-            flash[:alert] = "Неверная почта или пароль!"
+            flash[:alert]
             render :new
         end
     end
 
-    
-    
     def destroy
+        ActionCable.server.remote_connections.where(current_user: current_user).disconnect
+        current_user.update(status: User.statuses[:offline])
         session[:user_id] = nil
-        redirect_to root_path, notice: "Вы успешно вышли!"
+        redirect_to root_path
     end
 end

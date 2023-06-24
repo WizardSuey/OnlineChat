@@ -98,6 +98,7 @@ GEM
       reline (>= 0.3.1)
     erubi (1.12.0)
     ffi (1.15.5)
+    glib (1.0.3)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -235,9 +236,11 @@ DEPENDENCIES
   capybara
   carrierwave
   debug
+  glib
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  mini_magick
   puma (~> 5.0)
   rails (~> 7.0.5)
   redis (~> 4.0)
